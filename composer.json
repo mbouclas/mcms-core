@@ -2,10 +2,6 @@
     "name": "mcms/core-package",
     "type": "library",
     "description": "The core of the CMS",
-    "dist": {
-        "url": "git@bitbucket.org:ideaseven/package-core.git",
-        "type": "git"
-    },
     "keywords": [
     ],
     "license": "MIT",
