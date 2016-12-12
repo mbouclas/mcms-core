@@ -1,5 +1,5 @@
 {
-    "name": "idea-seven/core-package",
+    "name": "mcms/core-package",
     "type": "library",
     "description": "The core of the CMS",
     "dist": {
