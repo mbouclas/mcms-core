@@ -52,7 +52,8 @@ class ExtraFieldFilters extends QueryFilters
             return $this->builder;
         }
 
-        return $this->builder->where("label->{$locale}", 'LIKE', "%{$label}%");
+        $label = mb_strtolower($label);
+        return $this->builder->whereRaw(\DB::raw("LOWER(`label`->'$.\"{$locale}\"') LIKE '%{$label}%'"));
     }
 
     public function to($to = null)
