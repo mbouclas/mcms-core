@@ -20,10 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->text('settings')->nullable();
             $table->text('profile')->nullable();
-            $table->date('activated_at')->nullable();
-            $table->boolean('active')->nullable();
-            $table->boolean('awaits_moderation')->nullable();
-            $table->string('confirmation_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
