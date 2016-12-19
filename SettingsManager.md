@@ -45,3 +45,4 @@ your blade templates like so
 ```
 {{ $User->profile['website-url'] }}
 ```
+
