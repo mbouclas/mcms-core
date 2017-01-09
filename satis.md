@@ -19,7 +19,7 @@ satis.json
          }
     ],
 "require" : {
-"idea-seven/package-core" : "*"
+"mcms/package-core" : "*"
 },
     "archive": {
         "directory": "dist",
@@ -32,7 +32,7 @@ satis.json
 }
 ```
 
-* Name packages as idea-seven/package-name . No caps
+* Name packages as mcms/package-name . No caps
 
 if you have an issue with ssh
 * eval "$(ssh-agent)"
