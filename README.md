@@ -70,7 +70,6 @@ php artisan core:install provision.installer.json
 * [Settings Manager](https://github.com/mbouclas/mcms-core/blob/master/SettingsManager.md)
 * [Images](https://github.com/mbouclas/mcms-core/blob/master/images.md)
 * [Config files](https://github.com/mbouclas/mcms-core/blob/master/ConfigFiles.md)
-* [Config files](https://github.com/mbouclas/mcms-core/blob/master/ConfigFiles.md)
 * [Private packages](https://github.com/mbouclas/mcms-core/blob/master/satis.md)
 
 # Other modules
