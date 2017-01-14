@@ -24,7 +24,19 @@ class ExtraFieldController extends Controller
             print_r($query->bindings);
             // $query->time
         });*/
-        return $this->extraFieldService->model->filter($filters)->get();
+        $fields = [];
+        if ($filters->request->has('model')){
+            $m = str_replace('\\\\','\\', $filters->request->input('model'));
+            $model = new $m;
+            if (property_exists($model, 'config') && isset($model->config['extraFields'])){
+                $fields = $model->config['extraFields'];
+            }
+        }
+
+        return [
+            'fields' => $this->extraFieldService->model->filter($filters)->get(),
+            'customizations' => $fields
+        ];
     }
 
     public function show($id)
