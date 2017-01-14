@@ -3,29 +3,32 @@
 The Core package of the CMS
 
 ## Install
+To get the system up and running follow the steps bellow
+* Install a fresh copy of laravel like so `laravel new my-project` or via composer `composer create-project --prefer-dist laravel/laravel my-project`
+* Edit the composer.json file and add the following packages
+    ```
+    "mcms\/core-package": "0.*",
+    "mcms\/package-admin": "0.*",
+    "mcms\/package-pages": "0.*",
+    "mcms\/front-end": "0.*"
+    ```
+* Run `composer update` in order to download the packages
+* Edit your `config/app.php` and add the following service providers
+     ```
+      Mcms\Core\CoreServiceProvider::class,
+      Mcms\Admin\AdminServiceProvider::class,
+      Mcms\FrontEnd\FrontEndServiceProvider::class,
+      Mcms\Pages\PagesServiceProvider::class,
+     ```
+* Edit your .env file and add your database information
+* Run `php artisan core:install-packages` to run the interactive command line installer
+and just fill in the required fields
 
-Via Composer
+## Admin interface
+After you have completed the installation process, you can visit the admin interface
+on `/admin` and login with the email/password you provided during the installation.
 
-``` bash
-$ composer require Mcms/Core
-```
 
-## Usage
-
-``` php
-$skeleton = new League\Skeleton();
-
-```
-
-## API
-
-## Commands
-
-## migrations
-
-## Seeds
-
-## Change log
 
 ## Installer
 ``` console
@@ -63,41 +66,14 @@ php artisan core:install provision.installer.json
 }
 ```
 
-## Query Filters
-Apply query filters to any model by :
-- Adding the Filterable trait to your model.
-- Extending the QueryFilters abstract and adding your actual filters as methods
-- Set your $filterable array containing just the filterable methods
+# Table of contents
+* [Settings Manager](https://github.com/mbouclas/mcms-core/blob/master/SettingsManager.md)
+* [Images](https://github.com/mbouclas/mcms-core/blob/master/images.md)
+* [Config files](https://github.com/mbouclas/mcms-core/blob/master/ConfigFiles.md)
+* [Private packages](https://github.com/mbouclas/mcms-core/blob/master/satis.md)
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-# In case you get rejected in the private repos
-```
-git config --global user.email "mbouclas@gmail.com"
-git config --global user.name "Michael Bouclas"
-eval `ssh-agent -s`
-ssh-add
-```
-
-## Testing
-
-``` bash
-$ composer test
-```
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
-
-## Security
-
-If you discover any security related issues, please email mbouclas@gmail.com instead of using the issue tracker.
-
-## Credits
-
-- Roles : [romanbican/roles](https://github.com/romanbican/roles)
-- Multilingual [themsaid/laravel-multilingual](http://packalyst.com/packages/package/themsaid/laravel-multilingual)
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+# Other modules
+* [CMS](https://github.com/mbouclas/mcms-pages) A very opinionated CMS
+* [Frontend](https://github.com/mbouclas/mcms-frontEnd) The front end of any website
+* [Admin interface](https://github.com/mbouclas/mcms-admin) The admin interface
 
