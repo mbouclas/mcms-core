@@ -28,7 +28,7 @@
         "barryvdh/laravel-translation-manager": "0.2.x",
         "kalnoy/nestedset": "^4.1",
         "rtconner/laravel-tagging": "~2.1",
-        "santigarcor/laratrust": "4.0.x",
+        "santigarcor/laratrust": "3.0.x",
         "rtconner/laravel-likeable": "~1.2"
     },
     "require-dev": {
