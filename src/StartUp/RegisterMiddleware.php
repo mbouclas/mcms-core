@@ -25,8 +25,8 @@ class RegisterMiddleware
 //        $router->middleware('level', \Bican\Roles\Middleware\VerifyLevel::class);
 
 //        $router->middleware('role', \Laratrust\Middleware\LaratrustRole::class);
-        $router->middleware('role', \Mcms\Core\Middleware\VerifyRole::class);
-        $router->middleware('permission', \Laratrust\Middleware\LaratrustPermission::class);
-        $router->middleware('level', \Mcms\Core\Middleware\VerifyLevel::class);
+        $router->aliasMiddleware('role', \Mcms\Core\Middleware\VerifyRole::class);
+        $router->aliasMiddleware('permission', \Laratrust\Middleware\LaratrustPermission::class);
+        $router->aliasMiddleware('level', \Mcms\Core\Middleware\VerifyLevel::class);
     }
 }
