@@ -60,7 +60,8 @@ class UploadController extends Controller
 
         if ($request->has('copySettings') && $request->copySettings !== 'null' && is_string($request->input('copySettings'))){
             $copySettings = json_decode($request->input('copySettings'), true);
-            if ( ! empty($copySettings)){
+
+            if ( ! empty($copySettings) && ($copySettings['resize'] || (isset($copySettings['width'])))){
                 $image = $image->resizeTo($copySettings);
             }
         }
