@@ -40,6 +40,7 @@ class DynamicTablesService
         $newNode = new $this->model($item);
         //check for parent. If no parent given, this is a root item
         if ( ! $parentId){
+            $newNode->table_id = 0;//set it until we have an id
             $newNode->save();
             $newNode->table_id = $newNode->id;
             $newNode->save();

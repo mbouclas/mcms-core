@@ -15,7 +15,7 @@ class CreateDynamicTablesTable extends Migration
     {
         Schema::create('dynamic_tables', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('table_id')->unsigned();
+            $table->integer('table_id')->unsigned()->nullable();
             $table->text('title');
             $table->string('slug');
             $table->string('model');
