@@ -20,7 +20,7 @@ class ActionsAfterUpdate
     public function __construct()
     {
         $this->module = 'package-core';
-        $this->version = 11;
+        $this->version = 12;
     }
 
     public function handle(Command $command)
