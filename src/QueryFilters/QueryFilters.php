@@ -26,6 +26,8 @@ abstract class QueryFilters
      */
     protected $builder;
 
+    public $model;
+
     /**
      * Define your filterable methods
      * @var array

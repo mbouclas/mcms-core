@@ -17,6 +17,9 @@ Route::group(['prefix' => 'admin/api'], function () {
         $router->post('upload/{type}' ,'Mcms\Core\Http\Controllers\UploadController@handle');
         $router->resource('extraField', 'Mcms\Core\Http\Controllers\ExtraFieldController');
         $router->resource('settingsManager', 'Mcms\Core\Http\Controllers\SettingsManagerController');
+        $router->put('dynamicTable/rebuild/{parentId}','Mcms\Core\Http\Controllers\DynamicTablesController@rebuild');
+        $router->get('dynamicTable/getTableItems/{id}', 'Mcms\Core\Http\Controllers\DynamicTablesController@getTableItems');
+        $router->resource('dynamicTable', 'Mcms\Core\Http\Controllers\DynamicTablesController');
     });
 
 
