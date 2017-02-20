@@ -4,6 +4,7 @@ namespace Mcms\Core\Installer\AfterUpdate;
 
 
 
+use Mcms\Core\Installer\AfterUpdate\CreateMissingTable\CreateDynamicTablesTables;
 use Mcms\Core\Installer\AfterUpdate\CreateMissingTable\CreateExtraFieldsTables;
 use Mcms\Core\Installer\AfterUpdate\CreateMissingTable\CreateLikedTables;
 use Mcms\Core\Installer\AfterUpdate\CreateMissingTable\Update20160920;
@@ -20,6 +21,7 @@ class CreateMissingTable
             Update20161016::class,
             CreateExtraFieldsTables::class,
             CreateLikedTables::class,
+            CreateDynamicTablesTables::class
         ];
 
         foreach ($classes as $class) {
