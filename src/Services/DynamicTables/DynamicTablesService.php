@@ -50,7 +50,7 @@ class DynamicTablesService
         //find the parent
         $parent = $this->model->find($parentId);
         $table = $parent->ancestors()->get();
-        $newNode->table_id = $table[0]->id;
+        $newNode->table_id = (count($table) > 0) ? $table[0]->id : $parentId;
         /*
          * as this is a scoped model, we always need the table_id. This is the reason why we update it
          * before saving
