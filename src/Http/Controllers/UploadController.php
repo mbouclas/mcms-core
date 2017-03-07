@@ -69,7 +69,10 @@ class UploadController extends Controller
 
         //Ignore thumbs, they are saved in the model
         if ($request->input('type') != 'thumb') {
-            return $image->save();
+            $model = $image->save();
+            event('image.upload.done', $model);
+
+            return $model;
         }
 
         if ($request->has('expect')) {
