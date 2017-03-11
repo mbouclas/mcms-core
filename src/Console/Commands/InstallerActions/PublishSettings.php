@@ -27,6 +27,11 @@ class PublishSettings
             '--tag' => ['config'],
         ]);
 
+        $command->call('vendor:publish', [
+            '--provider' => 'Torann\GeoIP\GeoIPServiceProvider',
+            '--tag' => ['config'],
+        ]);
+
         $newConfig = require(config_path('laratrust.php'));
         $app['config']->set('laratrust', $newConfig);
 
