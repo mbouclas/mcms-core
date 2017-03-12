@@ -43,5 +43,6 @@ class RegisterFacades
         $facades->alias('ItemConnector', ItemConnectorFacade::class);
         $facades->alias('LaravelLocalization', \Mcamara\LaravelLocalization\Facades\LaravelLocalization::class);
         $facades->alias('Laratrust', \Laratrust\LaratrustFacade::class);
+        $facades->alias('GeoIP', \Torann\GeoIP\Facades\GeoIP::class);
     }
 }
