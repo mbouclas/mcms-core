@@ -57,12 +57,12 @@ class UploadController extends Controller
         if ($request->has('resize')){
             if (!$request->input('resize') || $request->input('resize') == 'true') {
                 $image = $image->resize();
-            }
 
-            if ($request->has('copySettings') && $request->copySettings !== 'null' && is_string($request->input('copySettings'))){
-                $copySettings = json_decode($request->input('copySettings'), true);
-                if (! empty($copySettings) && (isset($copySettings['resize']) || (isset($copySettings['width'])))){
-                    $image = $image->resizeTo($copySettings);
+                if ($request->has('copySettings') && $request->copySettings !== 'null' && is_string($request->input('copySettings'))){
+                    $copySettings = json_decode($request->input('copySettings'), true);
+                    if (! empty($copySettings) && (isset($copySettings['resize']) || (isset($copySettings['width'])))){
+                        $image = $image->resizeTo($copySettings);
+                    }
                 }
             }
         }
@@ -71,7 +71,6 @@ class UploadController extends Controller
         if ($request->input('type') != 'thumb') {
             $model = $image->save();
             event('image.upload.done', $model);
-
             return $model;
         }
 
@@ -87,6 +86,7 @@ class UploadController extends Controller
         }
 
         $model = $image->model();
+
         event('image.upload.done', $model);
         return $model;
     }
