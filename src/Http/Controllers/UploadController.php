@@ -70,7 +70,7 @@ class UploadController extends Controller
         //Ignore thumbs, they are saved in the model
         if ($request->input('type') != 'thumb') {
             $model = $image->save();
-            event('image.upload.done', $model);
+            event('image.upload.done', ['image' => $model]);
             return $model;
         }
 
@@ -87,7 +87,7 @@ class UploadController extends Controller
 
         $model = $image->model();
 
-        event('image.upload.done', $model);
+        event('image.upload.done', ['image' => $model]);
         return $model;
     }
 
@@ -130,7 +130,7 @@ class UploadController extends Controller
         }
 
         $model = $file->save();
-        event('file.upload.done', $model);
+        event('file.upload.done', ['file' => $model]);
         return $model;
     }
 }
