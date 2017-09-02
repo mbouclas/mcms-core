@@ -52,7 +52,8 @@ class User extends Authenticatable
     protected $casts = [
         'profile' => 'array',
         'settings' => 'array',
-        'active' => 'boolean'
+        'active' => 'boolean',
+        'awaits_moderation' => 'boolean'
     ];
     /**
      * The attributes that should be mutated to dates.

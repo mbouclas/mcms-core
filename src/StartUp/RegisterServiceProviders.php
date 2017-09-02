@@ -27,6 +27,7 @@ class RegisterServiceProviders
         App::register(\Laratrust\LaratrustServiceProvider::class);
         App::register(\Conner\Likeable\LikeableServiceProvider::class);
         App::register(\Torann\GeoIP\GeoIPServiceProvider::class);
+        App::register(\Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class);
 
     }
 }

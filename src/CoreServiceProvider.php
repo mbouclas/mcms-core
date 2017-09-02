@@ -3,6 +3,7 @@
 namespace Mcms\Core;
 
 use App;
+use Mcms\Core\Middleware\Cors;
 use Mcms\Core\StartUp\RegisterDirectives;
 use Mcms\Core\StartUp\RegisterEvents;
 use Mcms\Core\StartUp\RegisterFacades;
@@ -41,7 +42,7 @@ class CoreServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router, DispatcherContract $events)
+    public function boot(Router $router, DispatcherContract $events, \Illuminate\Contracts\Http\Kernel $kernel)
     {
         $this->publishes([
             __DIR__.'/../config/core.php' => config_path('core.php'),
@@ -90,7 +91,7 @@ class CoreServiceProvider extends ServiceProvider
         /*
          * Register middleware
          */
-        (new RegisterMiddleware())->handle($this,$router);
+        (new RegisterMiddleware())->handle($this,$router, $kernel);
 
         /**
          * Register Events

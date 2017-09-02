@@ -13,16 +13,6 @@ class PublishDependencies
 {
     public function handle(Command $command)
     {
-        //Roles
-/*        $command->call('vendor:publish', [
-            '--provider' => 'Bican\Roles\RolesServiceProvider',
-            '--tag' => ['config'],
-        ]);
-
-        $command->call('vendor:publish', [
-            '--provider' => 'Bican\Roles\RolesServiceProvider',
-            '--tag' => ['migrations'],
-        ]);*/
 
         //Multilingual
         $command->call('vendor:publish', [
@@ -54,6 +44,13 @@ class PublishDependencies
         $command->call('vendor:publish', [
             '--provider' => 'Conner\Likeable\LikeableServiceProvider',
             '--tag' => ['migrations'],
+        ]);
+
+        $command->call('vendor:publish', [
+            '--provider' => 'ymon\JWTAuth\Providers\JWTAuthServiceProvider',
+        ]);
+
+        $command->call('jwt:generate', [
         ]);
 
         //make sure we create a copy of the lang folder for all languages
