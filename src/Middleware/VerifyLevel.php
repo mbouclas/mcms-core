@@ -4,8 +4,6 @@ namespace Mcms\Core\Middleware;
 
 
 use Closure;
-use Mcms\Core\Exceptions\RoleNotFoundException;
-use Mcms\Core\Models\Role as RoleModel;
 use Laratrust\Middleware\LaratrustRole;
 
 class VerifyLevel extends LaratrustRole

@@ -23,10 +23,10 @@ class Resize
         if ( ! File::exists($targetDir)){
             File::makeDirectory($targetDir);
         }
-
+        $quality = (isset($options['quality'])) ? $options['quality'] : null;
         return $this->image
             ->make($file)
             ->{$resizeType}($options['width'], $options['height'])
-            ->save($target);
+            ->save($target, $quality);
     }
 }

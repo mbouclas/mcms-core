@@ -34,6 +34,7 @@ class RegisterMiddleware
         $router->aliasMiddleware('role', \Mcms\Core\Middleware\VerifyRole::class);
         $router->aliasMiddleware('permission', \Laratrust\Middleware\LaratrustPermission::class);
         $router->aliasMiddleware('level', \Mcms\Core\Middleware\VerifyLevel::class);
+        $router->aliasMiddleware('gate', \Mcms\Core\Middleware\VerifyGate::class);
         $router->aliasMiddleware('CORS', Cors::class);
         $router->aliasMiddleware('jwt.auth', \Tymon\JWTAuth\Middleware\GetUserFromToken::class);
         $router->aliasMiddleware('jwt.refresh', \Tymon\JWTAuth\Middleware\RefreshToken::class);

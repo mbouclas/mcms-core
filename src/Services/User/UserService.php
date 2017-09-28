@@ -39,9 +39,6 @@ class UserService
     }
 
     /**
-     * Filters the translations based on filters provided
-     * Legend has it that it will filter properly role based queries.
-     * So, if i am an admin, i should not be able to see the super users
      *
      * @param $filters
      */

@@ -54,6 +54,7 @@ class CoreServiceProvider extends ServiceProvider
             __DIR__.'/../config/debugbar.php' => config_path('debugbar.php'),
             __DIR__.'/../config/laratrust.php' => config_path('laratrust.php'),
             __DIR__.'/../config/user_profile.php' => config_path('user_profile.php'),
+            __DIR__.'/../config/jwt.php' => config_path('jwt.php'),
         ], 'config');
 
         $this->publishes([
@@ -74,6 +75,13 @@ class CoreServiceProvider extends ServiceProvider
                 'middleware' => 'web',
             ], function ($router) {
                 require __DIR__.'/Http/routes.php';
+            });
+
+            $router->group([
+                'prefix' => 'api',
+                'middleware' => 'api',
+            ], function ($router) {
+                require __DIR__.'/Http/api.php';
             });
 
             $this->loadViewsFrom(__DIR__ . '/../resources/views', 'core');
