@@ -26,6 +26,7 @@ class Resize
         $quality = (isset($options['quality'])) ? $options['quality'] : null;
         return $this->image
             ->make($file)
+            ->interlace()
             ->{$resizeType}($options['width'], $options['height'])
             ->save($target, $quality);
     }
