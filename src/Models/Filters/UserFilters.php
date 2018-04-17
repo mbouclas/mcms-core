@@ -2,6 +2,9 @@
 
 namespace Mcms\Core\Models\Filters;
 
+use Auth;
+use Mcms\Admin\GateKeeper\GateKeeper;
+use Mcms\Core\Models\Role;
 use Mcms\Core\QueryFilters\FilterableDate;
 use Mcms\Core\QueryFilters\FilterableLimit;
 use Mcms\Core\QueryFilters\FilterableOrderBy;
@@ -30,7 +33,10 @@ class UserFilters extends QueryFilters
         'orderBy',
         'role',
         'permission',
-        'awaits_moderation'
+        'awaits_moderation',
+        'roleHigherThan',
+        'roleLowerThan',
+        'gate'
     ];
 
     /**
@@ -40,7 +46,11 @@ class UserFilters extends QueryFilters
      */
     public function active($active = null)
     {
-        if ( ! $active){
+        if (is_string($active)) {
+            $active = ($active == 'true') ? 1 : false;
+        }
+
+        if ( is_null($active)){
             return $this->builder;
         }
 
@@ -97,6 +107,42 @@ class UserFilters extends QueryFilters
         return $this->builder->whereIn('id', $id);
     }
 
+    public function roleHigherThan($role = null)
+    {
+        if ( ! $role){
+            return $this->builder;
+        }
+
+        $role = Role::where('name', $role)->first();
+        if (! $role) {
+            return $this->builder;
+        }
+
+        $roles = Role::where('level','>=',$role->level)->get();
+
+        return $this->builder->whereHas('roles', function ($q) use ($roles) {
+            $q->whereIn('name', $roles->pluck('name'));
+        });
+    }
+
+    public function roleLowerThan($role = null)
+    {
+        if ( ! $role){
+            return $this->builder;
+        }
+
+        $role = Role::where('name', $role)->first();
+        if (! $role) {
+            return $this->builder;
+        }
+
+        $roles = Role::where('level','<=',$role->level)->get();
+
+        return $this->builder->whereHas('roles', function ($q) use ($roles) {
+            $q->whereIn('name', $roles->pluck('name'));
+        });
+    }
+
     public function role($role = null)
     {
         if ( ! $role){
@@ -112,6 +158,23 @@ class UserFilters extends QueryFilters
         return $this->builder->whereHas('roles', function ($q) use ($role) {
             $q->whereIn('name', $role);
         });
+    }
+
+    public function gate($gate = null)
+    {
+        if (is_null($gate)){
+            return $this->builder;
+        }
+
+        $gate = \Mcms\Core\Models\GateKeeper::where('gate', $gate)->first();
+        if (! $gate){
+            // make it fail
+            return $this->id('failed');
+        }
+
+        $roles = Role::where('level','>=',$gate->level)->get();
+
+        return $this->role(implode(',', $roles->pluck('name')->toArray()));
     }
 
     public function permission($permission = null)
