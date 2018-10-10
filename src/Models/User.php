@@ -12,13 +12,14 @@ use Mcms\Core\Traits\Presentable;
 use Illuminate\Notifications\Notifiable;
 use Mcms\FrontEnd\Helpers\Sluggable;
 use Mcms\Core\Traits\ExtraFields;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * The User model
  * Class User
  * @package Mcms\Core\Models
  */
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Presentable, CanResetPassword, Filterable, EntrustUserWithPermissions, Notifiable, ExtraFields, Sluggable;
     public $route;
@@ -117,5 +118,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserExtraFieldValue::class, 'item_id')
             ->where('model', get_class($this));
+    }
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

@@ -6,6 +6,7 @@ namespace Mcms\Core\StartUp;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Mcms\Core\Http\Middleware\JwtMiddleware;
 use Mcms\Core\Middleware\Cors;
 
 /**
@@ -36,8 +37,9 @@ class RegisterMiddleware
         $router->aliasMiddleware('level', \Mcms\Core\Middleware\VerifyLevel::class);
         $router->aliasMiddleware('gate', \Mcms\Core\Middleware\VerifyGate::class);
         $router->aliasMiddleware('CORS', Cors::class);
-        $router->aliasMiddleware('jwt.auth', \Tymon\JWTAuth\Middleware\GetUserFromToken::class);
-        $router->aliasMiddleware('jwt.refresh', \Tymon\JWTAuth\Middleware\RefreshToken::class);
+        $router->aliasMiddleware('jwt.verify', JwtMiddleware::class);
+//        $router->aliasMiddleware('jwt.auth', \Tymon\JWTAuth\Middleware\GetUserFromToken::class);
+//        $router->aliasMiddleware('jwt.refresh', \Tymon\JWTAuth\Middleware\RefreshToken::class);
 
     }
 }

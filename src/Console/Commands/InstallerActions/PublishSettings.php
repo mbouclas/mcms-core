@@ -28,7 +28,11 @@ class PublishSettings
         ]);
 
         $command->call('vendor:publish', [
-            '--provider' => 'Torann\GeoIP\GeoIPServiceProvider',
+            '--provider' => 'Tymon\JWTAuth\Providers\LaravelServiceProvider',
+        ]);
+
+        $command->call('vendor:publish', [
+            '--provider' => 'Mcms\Core\CoreServiceProvider',
             '--tag' => ['config'],
         ]);
 
