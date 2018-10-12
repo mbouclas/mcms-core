@@ -26,7 +26,7 @@ class Boot
         $user = Auth::user()->load(['permissions','roles','extraFields']);
         $maxLevel = $user->maxLevel();
 
-        return response()->json([
+        return [
             'user' => $user,
             'userModel' => get_class($user),
             'currentLocale' => LaravelLocalization::getCurrentLocale(),
@@ -47,6 +47,6 @@ class Boot
                 'Gates' => GateKeeper::gates()->pluck('gate'),
                 'maxLevel' => $maxLevel
             ],
-        ]);
+        ];
     }
 }

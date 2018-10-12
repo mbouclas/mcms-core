@@ -7,6 +7,7 @@ use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use JWTAuth;
+use Mcms\Core\Http\Controllers\Api\Boot;
 use Mcms\Core\Models\User;
 use Mcms\Core\Services\User\UserService;
 use function MongoDB\BSON\toJSON;
@@ -16,10 +17,12 @@ use Validator;
 class JWTUserController extends Controller
 {
     protected $user;
+    protected $boot;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, Boot $boot)
     {
         $this->user = $userService;
+        $this->boot = $boot;
     }
 
     public function authenticate(Request $request)
@@ -33,8 +36,9 @@ class JWTUserController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-
-        return response()->json(compact('token'));
+        $bootData = $this->boot->index();
+        $bootData['token'] = $token;
+        return $bootData;
     }
 
     public function register(Request $request)
