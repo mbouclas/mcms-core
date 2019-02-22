@@ -44,7 +44,5 @@ class RegisterFacades
         $facades->alias('LaravelLocalization', \Mcamara\LaravelLocalization\Facades\LaravelLocalization::class);
         $facades->alias('Laratrust', \Laratrust\LaratrustFacade::class);
         $facades->alias('GeoIP', \Torann\GeoIP\Facades\GeoIP::class);
-        $facades->alias('JWTAuth', \Tymon\JWTAuth\Facades\JWTAuth::class);
-        $facades->alias('JWTFactory', \Tymon\JWTAuth\Facades\JWTFactory::class);
     }
 }

@@ -30,6 +30,11 @@ class GateKeeper
         return $this->model->where('level', '<=', $level)->get();
     }
 
+    public function all()
+    {
+        return $this->model->get();
+    }
+
     public function add(array $gate)
     {
         $check = Validator::make($gate, [
@@ -66,6 +71,10 @@ class GateKeeper
         }
 
         return true;
+    }
+
+    public static function allGates() {
+        return self::instance()->all();
     }
 
     public static function gates($level = null)

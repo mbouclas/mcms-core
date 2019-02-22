@@ -18,7 +18,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('me', '\Mcms\Core\Http\Controllers\Api\Me@index');
     Route::get('boot', '\Mcms\Core\Http\Controllers\Api\Boot@index');
     Route::get('refreshToken', '\Mcms\Core\Http\Controllers\JWTUserController@refreshToken');
-    Route::get('logout', '\Mcms\Core\Http\Controllers\JWTUserController@logout');
+    Route::post('logout', '\Mcms\Core\Http\Controllers\JWTUserController@logout');
     Route::get('/protectedTest', function (Request $request) {
        return 'ok';
     });

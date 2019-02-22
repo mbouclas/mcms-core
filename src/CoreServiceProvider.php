@@ -54,7 +54,6 @@ class CoreServiceProvider extends ServiceProvider
             __DIR__.'/../config/debugbar.php' => config_path('debugbar.php'),
             __DIR__.'/../config/laratrust.php' => config_path('laratrust.php'),
             __DIR__.'/../config/user_profile.php' => config_path('user_profile.php'),
-            __DIR__.'/../config/jwt.php' => config_path('jwt.php'),
         ], 'config');
 
         $this->publishes([

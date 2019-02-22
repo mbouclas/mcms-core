@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mbouclas
- * Date: 23/9/2016
- * Time: 10:58 πμ
- */
-
 namespace Mcms\Core\Traits;
 
 

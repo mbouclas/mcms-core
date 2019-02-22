@@ -23,4 +23,12 @@ trait Filterable
     {
         return $filters->apply($query);
     }
+
+    public function scopeOwner($query, $minLevel = 98) {
+        if (auth()->user()->level() > $minLevel) {
+            return $this;
+        }
+
+        return $this->where('user_id', auth()->user()->id);
+    }
 }

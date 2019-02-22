@@ -12,14 +12,14 @@ use Mcms\Core\Traits\Presentable;
 use Illuminate\Notifications\Notifiable;
 use Mcms\FrontEnd\Helpers\Sluggable;
 use Mcms\Core\Traits\ExtraFields;
-use Tymon\JWTAuth\Contracts\JWTSubject;
+
 
 /**
  * The User model
  * Class User
  * @package Mcms\Core\Models
  */
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable
 {
     use Presentable, CanResetPassword, Filterable, EntrustUserWithPermissions, Notifiable, ExtraFields, Sluggable;
     public $route;

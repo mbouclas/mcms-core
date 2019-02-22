@@ -28,10 +28,6 @@ class PublishSettings
         ]);
 
         $command->call('vendor:publish', [
-            '--provider' => 'Tymon\JWTAuth\Providers\LaravelServiceProvider',
-        ]);
-
-        $command->call('vendor:publish', [
             '--provider' => 'Mcms\Core\CoreServiceProvider',
             '--tag' => ['config'],
         ]);

@@ -19,7 +19,7 @@ class CreateExtraFieldValuesTable extends Migration
             $table->integer('extra_field_id')->unsigned()->index();
             $table->foreign('extra_field_id')->references('id')->on('extra_fields')->onDelete('cascade');
             $table->string('model');
-            $table->text('value');
+            $table->text('value')->nullable();
             $table->timestamps();
         });
     }
