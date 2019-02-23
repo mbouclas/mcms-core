@@ -14,7 +14,7 @@ class AddColumnsToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->date('activated_at')->nullable();
+            $table->timestamp('activated_at')->nullable();
             $table->boolean('active')->nullable();
             $table->boolean('awaits_moderation')->nullable();
             $table->string('confirmation_code')->nullable();
