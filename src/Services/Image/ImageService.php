@@ -155,7 +155,7 @@ class ImageService
         $tmp = "{$path}/{$file_name}";
         File::copy($file->getPathname(), $tmp);
 
-        $this->uploadedFileInstance = new UploadedFile($tmp, $file_name, $file->getSize(), $file->getMimeType(), null, true);
+        $this->uploadedFileInstance = new UploadedFile($tmp, $file_name, $file->getMimeType(), null, true);
 
         $this->move();
 
