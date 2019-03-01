@@ -35,6 +35,7 @@ class ExtraFields
         $Item = $this->model->find($id);
         $Item->update($item);
 
+        event('extraField.updated', $Item);
         return $Item;
     }
 
@@ -43,6 +44,8 @@ class ExtraFields
         $item['model'] = str_replace('\\\\', '\\', $item['model']);
         $item['slug'] = str_slug($item['varName']);
         $Item = $this->model->create($item);
+
+        event('extraField.created', $Item);
         return $Item;
     }
 
@@ -50,6 +53,7 @@ class ExtraFields
     {
         $item = $this->model->find($id);
 
+        event('extraField.destroyed', $item);
         return $item->delete();
     }
 }
