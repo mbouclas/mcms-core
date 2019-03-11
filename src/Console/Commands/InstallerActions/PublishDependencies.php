@@ -46,12 +46,6 @@ class PublishDependencies
             '--tag' => ['migrations'],
         ]);
 
-        $command->call('vendor:publish', [
-            '--provider' => 'ymon\JWTAuth\Providers\JWTAuthServiceProvider',
-        ]);
-
-        $command->call('jwt:generate', [
-        ]);
 
         //make sure we create a copy of the lang folder for all languages
         $locales = LaravelLocalization::getSupportedLocales();
