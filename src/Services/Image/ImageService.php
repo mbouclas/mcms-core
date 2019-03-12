@@ -294,7 +294,7 @@ class ImageService
         );
 
         if ($this->config['optimize']){
-            Event::fire('image.uploaded', ['image' => $model]);
+            event('image.uploaded', ['image' => $model]);
         }
 
         return $model;

@@ -111,7 +111,7 @@ class FileService
             ['item_id' => isset($request['item_id']) ? $request['item_id'] : null]
         );
 
-        Event::fire('file.uploaded', ['file' => $model]);
+        event('file.uploaded', ['file' => $model]);
 
         return $model;
     }

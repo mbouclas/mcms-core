@@ -6,6 +6,7 @@ use Mcms\Core\Helpers\Strings;
 use Mcms\Core\Models\Menu;
 use Mcms\Core\Models\MenuItem;
 use Mcms\Core\Services\Lang\Contracts\LanguagesContract;
+use Str;
 
 /**
  * Handles menus
@@ -78,7 +79,7 @@ class MenuService
      */
     public function store(array $menu)
     {
-        $menu['slug'] = str_slug($menu['title'], '-');
+        $menu['slug'] = Str::slug($menu['title'], '-');
         if ( ! isset($menu['settings']) OR ! is_array($menu['settings'])){
             $menu['settings'] = [];
         }

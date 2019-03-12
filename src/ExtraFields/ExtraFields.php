@@ -18,8 +18,9 @@ namespace Mcms\Core\ExtraFields;
         print_r($pages->toArray());*/
 
 use Mcms\Core\Models\ExtraField;
+    use Str;
 
-class ExtraFields
+    class ExtraFields
 {
     public $model;
 
@@ -31,7 +32,7 @@ class ExtraFields
     public function update($id, array $item)
     {
         $item['model'] = str_replace('\\\\', '\\', $item['model']);
-        $item['slug'] = str_slug($item['varName']);
+        $item['slug'] = Str::slug($item['varName']);
         $Item = $this->model->find($id);
         $Item->update($item);
 
@@ -42,7 +43,7 @@ class ExtraFields
     public function store(array $item)
     {
         $item['model'] = str_replace('\\\\', '\\', $item['model']);
-        $item['slug'] = str_slug($item['varName']);
+        $item['slug'] = Str::slug($item['varName']);
         $Item = $this->model->create($item);
 
         event('extraField.created', $Item);

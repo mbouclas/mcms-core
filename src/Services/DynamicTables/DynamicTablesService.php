@@ -7,6 +7,7 @@ use App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Mcms\Core\Models\DynamicTable;
+use Str;
 
 class DynamicTablesService
 {
@@ -124,7 +125,7 @@ class DynamicTablesService
 
     private function setSlug($item){
         if ( ! isset($item['slug']) || ! $item['slug']){
-            return str_slug($item['title'][App::getLocale()]);
+            return Str::slug($item['title'][App::getLocale()]);
         }
 
         return $item['slug'];
