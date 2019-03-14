@@ -17,7 +17,8 @@ abstract class ExtraFieldValue extends Model
     ];
     protected $table = 'extra_field_values';
     protected $fillable = [
-        'itemid',
+        'item_id',
+        'model',
         'extra_field_id',
         'value',
     ];
