@@ -185,7 +185,7 @@ class ImageService
 
         if ($original){
             $copies['originals'] = [
-                'url' => $this->configurator->formatCopyUrl($original, $copy),
+                'url' => $this->configurator->formatCopyUrl($original, []),
                 'path' => $original
             ];
         }
@@ -295,6 +295,11 @@ class ImageService
 
         if ($this->config['optimize']){
             event('image.uploaded', ['image' => $model]);
+        }
+
+        // override the model output. Good for when using a CDN and want to change the urls
+        if (isset($this->config['afterUpload'])) {
+            return (new $this->config['afterUpload'])->handle($model);
         }
 
         return $model;
