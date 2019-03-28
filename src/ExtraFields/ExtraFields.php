@@ -18,7 +18,7 @@ namespace Mcms\Core\ExtraFields;
         print_r($pages->toArray());*/
 
 use Mcms\Core\Models\ExtraField;
-    use Str;
+    use Illuminate\Support\Str;
 
     class ExtraFields
 {
