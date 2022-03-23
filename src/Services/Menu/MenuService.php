@@ -89,7 +89,7 @@ class MenuService
 
     /**
      * Deletes a menu and its items
-     * 
+     *
      * @param $id
      * @return bool
      */
@@ -97,7 +97,7 @@ class MenuService
     {
         $this->menu->find($id)->delete();
         $this->menuItem->where('menu_id',$id)->delete();
-        
+
         return true;
     }
 
@@ -115,8 +115,14 @@ class MenuService
         //throws exception if somethings is wrong
         $validator->baseCheck();
         $node = (new PermalinkCreator($validator, $node, $this->lang))->handle();
+        $modelClass = new $node['model'];
+        $model = $modelClass->where('id', $node['item_id'])->first();
 
         $newNode = new $this->menuItem($node);
+        $newNode->settings = [
+            "item" => $node['settings'],
+            "node" => $model->settings
+        ];
         $newNode->save();
 
         if ( ! $parent){
@@ -168,7 +174,10 @@ class MenuService
             'item_id' => $model->id,
             'slug_pattern' => (method_exists($model, 'getSlug')) ? $model->getSlug() : $item->slug_pattern,
             'titleField' => $item->settings['titleField'],
-            'settings' => $item->settings
+            'settings' => [
+                "item" => $item->settings,
+                "node" => $model->settings
+            ]
         ];
 
         $validator = new ValidateMenuItem($node);
@@ -199,7 +208,7 @@ class MenuService
 
     /**
      * Delete a single node. Optionally return the entire tree
-     * 
+     *
      * @param $id
      * @param bool $returnMenu
      * @return $this|mixed
@@ -209,7 +218,7 @@ class MenuService
         $node = $this->menuItem->find($id);
         $menuId = $node->menu_id;
         $node->delete();
-        
+
         if ( ! $returnMenu){
             return $this;
         }
