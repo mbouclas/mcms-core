@@ -173,7 +173,7 @@ class MenuService
             'model' => $modelName,
             'item_id' => $model->id,
             'slug_pattern' => (method_exists($model, 'getSlug')) ? $model->getSlug() : $item->slug_pattern,
-            'titleField' => $item->settings['titleField'],
+            'titleField' => $item->settings['titleField'] ?? 'title',
             'settings' => [
                 "item" => $item->settings,
                 "node" => $model->settings
