@@ -6,7 +6,7 @@ use Mcms\Core\Helpers\Strings;
 use Mcms\Core\Models\Menu;
 use Mcms\Core\Models\MenuItem;
 use Mcms\Core\Services\Lang\Contracts\LanguagesContract;
-use Str;
+use \Illuminate\Support\Str;
 
 /**
  * Handles menus
@@ -115,13 +115,16 @@ class MenuService
         //throws exception if somethings is wrong
         $validator->baseCheck();
         $node = (new PermalinkCreator($validator, $node, $this->lang))->handle();
-        $modelClass = new $node['model'];
-        $model = $modelClass->where('id', $node['item_id'])->first();
+        // Not a custom link
+        if ($node['model']) {
+            $modelClass = new $node['model'];
+            $model = $modelClass->where('id', $node['item_id'])->first();
+        }
 
         $newNode = new $this->menuItem($node);
         $newNode->settings = [
             "item" => $node['settings'],
-            "node" => $model->settings
+            "node" => (isset($model)) ? $model->settings : null
         ];
         $newNode->save();
 
