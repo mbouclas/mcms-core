@@ -1,4 +1,5 @@
 <?php
+
 Route::group(['prefix' => 'admin/api'], function () {
     Route::group(['middleware' =>['level:50']], function($router)
     {
