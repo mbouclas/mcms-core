@@ -13,12 +13,6 @@
             "role": "Developer"
         }
     ],
-    "repositories": [{
-        "type": "path",
-        "url": "/home/packages/*",
-        "canonical": false
-    }
-    ],
     "require": {
         "illuminate/support": "~5.1",
         "teepluss/theme": "^2.0",
