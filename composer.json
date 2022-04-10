@@ -13,12 +13,17 @@
             "role": "Developer"
         }
     ],
+    "repositories": [{
+        "type": "path",
+        "url": "/home/packages/*",
+        "canonical": false
+    }
+    ],
     "require": {
         "illuminate/support": "~5.1",
         "teepluss/theme": "^2.0",
         "doctrine/dbal": "^2.5",
         "cocur/slugify": "^2.1",
-        "themsaid/laravel-multilingual": "^1.0",
         "arrilot/laravel-widgets": "^3.3",
         "laracasts/utilities": "~2.0",
         "mcamara/laravel-localization": "^1.6.2",
