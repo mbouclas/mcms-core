@@ -20,7 +20,7 @@
         "arrilot/laravel-widgets": "^3.3",
         "laracasts/utilities": "~3.2.1",
         "mcamara/laravel-localization": "^1.6.2",
-        "barryvdh\/laravel-ide-helper": "^2.1",
+        "barryvdh\/laravel-ide-helper": "^2.12.3",
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-translation-manager": "0.*",
         "kalnoy/nestedset": "^5.0.5",
