@@ -14,7 +14,6 @@
         }
     ],
     "require": {
-        "illuminate/support": "~5.1",
         "teepluss/theme": "^2.0",
         "doctrine/dbal": "^2.5",
         "cocur/slugify": "^2.1",
