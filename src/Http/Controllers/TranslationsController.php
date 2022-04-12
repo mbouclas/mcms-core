@@ -98,10 +98,8 @@ class TranslationsController extends Controller
 
     public function sync()
     {
-        $outcome = [];
-
         $groups = $this->translations->groups();
-        $outcome = $groups->map(function ($group) use ($outcome) {
+        $outcome = $groups->map(function ($group)  {
             $process = new Process(['php', 'artisan', 'translations:export', $group]);
             $process->setWorkingDirectory(base_path());
             $process->run();

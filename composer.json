@@ -36,12 +36,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Mcms\\Core\\": "src",
-            "Themsaid\\Multilingual\\": "Themsaid"
+            "Mcms\\Core\\": "src"
         },
         "psr-0": {
-            "Mcms\\Core": "src/",
-            "Themsaid\\Multilingual": "Themsaid"
+            "Mcms\\Core": "src/"
         }
     },
     "autoload-dev": {
