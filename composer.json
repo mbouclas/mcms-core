@@ -14,18 +14,20 @@
         }
     ],
     "require": {
+        "illuminate/support": "~5.1",
         "teepluss/theme": "^2.0",
         "doctrine/dbal": "^2.5",
         "cocur/slugify": "^2.1",
+        "themsaid/laravel-multilingual": "^1.0",
         "arrilot/laravel-widgets": "^3.3",
-        "laracasts/utilities": "~3.2.1",
+        "laracasts/utilities": "~2.0",
         "mcamara/laravel-localization": "^1.6.2",
-        "barryvdh\/laravel-ide-helper": "^2.12.3",
+        "barryvdh\/laravel-ide-helper": "^2.1",
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-translation-manager": "0.*",
-        "kalnoy/nestedset": "^5.0.5",
+        "kalnoy/nestedset": "^4.1",
         "rtconner/laravel-tagging": "~2.1",
-        "santigarcor/laratrust": "6.0.x",
+        "santigarcor/laratrust": "3.0.x",
         "rtconner/laravel-likeable": "~1.2",
         "torann/geoip": "^1.0",
         "geoip2/geoip2": "^2.4"
@@ -36,12 +38,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Mcms\\Core\\": "src",
-            "Themsaid\\Multilingual\\": "Themsaid"
+            "Mcms\\Core\\": "src"
         },
         "psr-0": {
-            "Mcms\\Core": "src/",
-            "Themsaid\\Multilingual": "Themsaid"
+            "Mcms\\Core": "src/"
         }
     },
     "autoload-dev": {
