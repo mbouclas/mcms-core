@@ -7,6 +7,8 @@ use Mcms\Core\Services\Lang\Contracts\LanguagesContract;
 use Illuminate\Http\Request;
 use LaravelLocalization, App, Artisan;
 use Illuminate\Routing\Controller;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 /**
  * Responsible for all admin translations API calls
@@ -96,8 +98,23 @@ class TranslationsController extends Controller
 
     public function sync()
     {
-        Artisan::call('translations:export', ['group' => '*']);
+        $outcome = [];
+
+        $groups = $this->translations->groups();
+        $outcome = $groups->map(function ($group) use ($outcome) {
+            $process = new Process(['php', 'artisan', 'translations:export', $group]);
+            $process->setWorkingDirectory(base_path());
+            $process->run();
+
+            if (!$process->isSuccessful()) {
+                return $process->getOutput();
+            }
+
+            return $process->getOutput();
+        });
+
+
         return response()
-            ->json(['success' => true]);
+            ->json(['success' => true, 'out' => $outcome->all()]);
     }
 }
